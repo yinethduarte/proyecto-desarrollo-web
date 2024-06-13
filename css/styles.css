@@ -5,11 +5,14 @@
   box-sizing: border-box;
 }
 
-.botones-header {
-  background-image: url(/imagenes/zorro.jpg);
-  background-repeat: round;
+body {
+  background-image: url(../imagenes/zorro.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100%;
-  height: 700px;
+}
+
+.botones-header {
 }
 
 .contenedor-boton {
@@ -18,6 +21,17 @@
 }
 
 .boton {
+  padding: 1%;
+  margin: 2%;
+  background-color: rgb(59, 89, 117);
+  border-radius: 8%;
+  border: none;
+  color: beige;
+  box-shadow: 10px 5px 5px rgb(133, 147, 168);
+  cursor: pointer;
+}
+
+.boton a {
   padding: 1%;
   margin: 2%;
   background-color: rgb(59, 89, 117);
@@ -190,4 +204,49 @@ img {
   width: 250px;
 
   object-fit: cover;
+}
+
+table {
+  width: 90%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.icon {
+  cursor: pointer;
+  color: #007bff;
+}
+
+.icon:hover {
+  color: #0056b3;
+}
+
+.usuarios-contenedor {
+  display: flex;
+  height: auto;
+  background: #fff;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin: 5%;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.flex-centrado {
+  display: flex;
+  justify-content: center;
 }
