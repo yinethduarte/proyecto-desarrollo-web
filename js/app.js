@@ -52,7 +52,7 @@ app.get("/usuario", (req, res) => {
 app.delete("/usuario/:id", (req, res) => {
   const userId = req.params.id;
   deletedb
-    .eliminarBD(userId)
+    .eliminarUsuarioBD(userId)
     .then(() => {
       res
         .status(200)
@@ -69,8 +69,46 @@ app.post("/usuario", (req, res) => {
   // Prepare output in JSON format
   console.log(req.body);
   const usuario = req.body;
-  insertdb.insertarEnBD(usuario);
+  insertdb.insertarUsuarioEnBD(usuario);
   res.status(201).json("El usuario ha sido agregado a la base de datos");
+});
+
+//publicaciones
+app.get("/publicacion", (req, res) => {
+  readdb
+    .leerPublicacionesBD()
+    .then((publicaciones) => {
+      res.status(200).json(publicaciones);
+    })
+    .catch((error) => {
+      res
+        .status(500)
+        .json({ error: "Error al leer publicaciones de la base de datos" });
+    });
+});
+
+app.delete("/publicacion/:id", (req, res) => {
+  const publicacionId = req.params.id;
+  deletedb
+    .eliminarPublicacionBD(publicacionId)
+    .then(() => {
+      res.status(200).json({
+        message: `Publicacion con id ${publicacionId} eliminada con éxito!`,
+      });
+    })
+    .catch((error) => {
+      res
+        .status(500)
+        .json({ error: "Error al eliminar publicación de la base de datos" });
+    });
+});
+
+app.post("/publicacion", (req, res) => {
+  // Prepare output in JSON format
+  console.log(req.body);
+  const publicacion = req.body;
+  insertdb.insertarPublicacionEnBD(publicacion);
+  res.status(201).json("La publicacion ha sido agregada a la base de datos");
 });
 
 app.listen(port, () => {

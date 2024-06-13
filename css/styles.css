@@ -108,6 +108,17 @@ body {
   border-bottom: 1px solid #a8a8a8;
   color: #333;
 }
+.registro select {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  margin-bottom: 25px;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom: 1px solid #a8a8a8;
+  color: #333;
+}
 
 .registro input:active,
 .registro input:focus {

@@ -1,5 +1,5 @@
 function consultarUsuarios() {
-  const url = "http://localhost:3000/usuario";
+  const url = "http://localhost:3000/publicacion";
   let xhr = new XMLHttpRequest();
   xhr.open("GET", url, true);
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -12,7 +12,7 @@ function consultarUsuarios() {
       // Si la respuesta es JSON, puedes parsearla así:
       let responseObj = JSON.parse(xhr.responseText);
       console.log(responseObj);
-      document.getElementById("cuerpoUsuarios").innerHTML = "";
+      document.getElementById("cuerpoPublicaciones").innerHTML = "";
       agregarUsuariosDB(responseObj);
     } else {
       console.error(`Error ${xhr.status}: ${xhr.statusText}`);
@@ -23,7 +23,7 @@ function consultarUsuarios() {
 }
 
 function eliminarPublicacion(id) {
-  const url = `http://localhost:3000/usuario/${id}`;
+  const url = `http://localhost:3000/publicacion/${id}`;
   let xhr = new XMLHttpRequest();
   xhr.open("DELETE", url, true);
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -50,16 +50,16 @@ function agregarUsuariosDB(usuarios) {
     tdId.textContent = usuario.id;
 
     const tdNombre = document.createElement("td");
-    tdNombre.textContent = usuario.nombre;
+    tdNombre.textContent = usuario.titulo;
 
     const tdCorreo = document.createElement("td");
-    tdCorreo.textContent = usuario.correo;
+    tdCorreo.textContent = usuario.contenido;
 
     const tdTelefono = document.createElement("td");
-    tdTelefono.textContent = usuario.telefono;
+    tdTelefono.textContent = usuario.fecha;
 
     const tdFecha = document.createElement("td");
-    tdFecha.textContent = usuario.fecha;
+    tdFecha.textContent = usuario.usuario_id;
 
     const tdEliminar = document.createElement("td");
 
@@ -89,8 +89,8 @@ function agregarUsuariosDB(usuarios) {
     tr.appendChild(tdFecha);
     tr.appendChild(tdEliminar);
 
-    // Añadir el <tr> al elemento con id "cuerpoUsuarios"
-    document.getElementById("cuerpoUsuarios").appendChild(tr);
+    // Añadir el <tr> al elemento con id "cuerpoPublicaciones"
+    document.getElementById("cuerpoPublicaciones").appendChild(tr);
     // Definir la función que se llamará al hacer clic en el icono
     /*function eliminarUsuario(fila) {
       console.log("Fila eliminada" + fila);
